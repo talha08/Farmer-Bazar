@@ -1,0 +1,1 @@
+C:\Users\talha\Desktop\Droppers\farmer-bazzar\app/views/categories/show.blade.php
