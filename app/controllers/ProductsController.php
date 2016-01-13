@@ -22,7 +22,7 @@ class ProductsController extends \BaseController {
 
 	public function store()
 	{
-		$destinationPath = public_path('uploads/products');
+			$destinationPath = public_path('uploads/products');
 
 		$rules=[
 			'product_name' => 'required',
@@ -47,7 +47,7 @@ class ProductsController extends \BaseController {
 			if (Input::hasFile('picture')){
 				$photo = Input::file('picture');
 				$photo_fileName = strtotime(date('P')).md5($photo->getClientOriginalName()).".".$photo->getClientOriginalExtension();
-				$photo->move($destinationPath, $photo_fileName);
+				 $photo->move($destinationPath, $photo_fileName);
 			}
 
 			$position = $this->latlong($data['location']);
@@ -69,7 +69,7 @@ class ProductsController extends \BaseController {
 			$product->long = $position['long'];
 
             if($photo_fileName != null){
-                $product->picture = $photo_fileName;
+                $product->picture = 'uploads/products/'.$photo_fileName;
 
             }
 
@@ -201,6 +201,40 @@ class ProductsController extends \BaseController {
         $product->delete();
 		return Redirect::route('products.index')->with('success','Successfully Deleted');
 	}
+
+
+
+
+public function allProducts(){
+
+       
+         
+         $category= Category::all();
+         $product= Product::all();
+		return View::make('main.all')
+					  ->with('product',$product)
+					  ->with('category',$category)
+	                  ->with('title',"Product Details");
+ }   
+
+
+
+ public function rice(){
+ 	 $product= Product::where('crop_id',1)->get();
+ 	 return View::make('main.all')
+ 	           ->with('product',$product)
+ 	           ->with('title',"Product Details");
+ }
+
+
+
+  public function search() {
+    $q = Input::get('search');
+        $product = Product::where('product_name', 'LIKE', '%'. $q .'%')
+        ->get();
+     return Redirect::route('main.all')->with('product', $product);
+}
+
 
 
 

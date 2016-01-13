@@ -17,6 +17,8 @@ class CreateUsersTable extends Migration {
 			$table->engine = 'InnoDB';
 			$table->increments('id');
 			$table->string('contact')->unique();
+			$table->string('name');
+			$table->string('district');
 			$table->string('password');
 			$table->string('remember_token')->nullable();
 			$table->timestamps();

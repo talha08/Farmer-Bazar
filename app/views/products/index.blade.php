@@ -15,9 +15,9 @@
                     <td><a href="{{ route('products.create') }}"><button class="btn btn-success">Create New Product</button></a></td>
                 </span>
 
-
-
                 </header>
+
+
 
                 <div class="panel-body">
                     <table class="table table-striped display" id="data">
@@ -35,13 +35,13 @@
                             <th>Expiry Date</th>
                             <th>Longi</th>
                             <th>Lati</th>
-                            <th>View</th>
-                            <th>Edit</th>
-                            <th>Delete</th>
+                            <th>Action</th>
+
+
                         </tr>
-
-
                         </thead>
+
+
                         <tbody>
                         @foreach ($product as $product)
                             <tr>
@@ -58,15 +58,14 @@
                                 <td>{{ $product->long }}</td>
                                 <td>{{ $product->lat }}</td>
 
-
-
-                                <td><a href="{{ route('products.show', $product->id) }}"><button class="btn btn-info">View</button></a></td>
-                                <td><a href="{{ route('products.edit', $product->id) }}"><button class="btn btn-info">Edit</button></a></td>
-                                <td><a href="{{ route('products.destroy', $product->id) }}"><button class="btn btn-danger">Delete</button></a></td>
-
+                                <td>
+                               <a href="{{ route('products.show', $product->id) }}"><button class="btn btn-info btn-xs glyphicon glyphicon-eye-open"></button></a>
+                                <a href="{{ route('products.edit', $product->id) }}"><button class="btn btn-success btn-xs glyphicon glyphicon-edit"></button></a>
+                                <a href="{{ route('products.destroy', $product->id) }}"><button class= " btn btn-danger btn-xs glyphicon glyphicon-trash"></button></a>
+                                </td>
 
                             </tr>
-                        @endforeach
+                            @endforeach
                         </tbody>
                     </table>
                 </div>

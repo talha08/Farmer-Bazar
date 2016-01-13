@@ -22,13 +22,14 @@ Route::group(['before' => 'guest'], function(){
 
 
 	Route::get('home', ['as'=>'main.index','uses' => 'HomeController@home']);
-
+    Route::post('search', ['as'=>'search','uses' => 'ProductsController@search']);
+    Route::get('products-all',['as'=>'main.all','uses'=>'ProductsController@allProducts']);
 	Route::controller('password', 'RemindersController');
 	Route::get('login', ['as'=>'login','uses' => 'AuthController@login']);
 	Route::post('login', array('uses' => 'AuthController@doLogin'));
-	Route::get('register',['as'=>'user.create','uses'=>'UserController@create']);
-	Route::post('register',['as'=>'user.store','uses'=>'UserController@store']);
-
+	Route::get('register',['as'=>'main.create','uses'=>'UserController@create']);
+	Route::post('register',['as'=>'main.store','uses'=>'UserController@store']);
+   
 
 });
 
@@ -80,6 +81,7 @@ Route::group(array('before' => 'auth'), function()
 	Route::get('map/{location}',['as'=>'location','uses'=>'MapController@latlong']);
 
 });
+
 
 
 

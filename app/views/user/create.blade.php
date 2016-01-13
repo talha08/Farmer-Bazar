@@ -23,16 +23,13 @@
     {{ HTML::script('js/html5shiv.js') }}
     {{ HTML::script('js/respond.min.js') }}
     <![endif]-->
-
-    <script type="text/javascript">
-        var RecaptchaOptions = {
-            theme : 'clean'
-        };
-    </script>
 </head>
 
-<body class="register-body">
+<body class="login-body">
 <div class="container">
+
+
+
     {{ Form::open(array('route' => 'user.create', 'method' => 'post', 'class' => 'form-signin')) }}
     <h2 class="form-signin-heading">User Registration</h2>
     <div class="login-wrap">
@@ -63,6 +60,8 @@
             <p class="error">{{$errors->first('agree')}}</p>
         </div>
 
+
+        {{ Form::submit('Register', array('class' => 'btn btn-lg btn-login btn-block')) }}
         <label class="checkbox">
                         <span class="pull-left">
 		                    <a href="{{route('login')}}">Login</a>
@@ -70,12 +69,12 @@
 		                <span class="pull-right">
 		                </span>
         </label>
-        {{ Form::submit('Register', array('class' => 'btn btn-lg btn-login btn-block')) }}
     </div>
 
 
 
     {{ Form::close() }}
+
 
 
 </div>
@@ -86,4 +85,5 @@
 
 </body>
 </html>
-@stop
+
+

@@ -10,6 +10,8 @@ class UsersTableSeeder extends Seeder {
 		$users = [
 					[
 								'contact'      => '0',
+								'name'      => 'Talha',
+								'district'      => 'Sylhet',
 								'password'   => Hash::make('a'),
 								'created_at' => date('Y-m-d H:i:s'),
 								'updated_at' => date('Y-m-d H:i:s')

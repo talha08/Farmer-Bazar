@@ -14,7 +14,7 @@ class ProductsTableSeeder extends Seeder {
 			Product::create([
 				'product_name'=> $faker->word,
 				'details'=>$faker->paragraph,
-				'picture' => null,
+				'picture' =>'uploads/products/1default.jpg',
 				'min_price'=>$faker->randomDigit,
 				'max_price'=>$faker->randomDigitNotNull,
 				'crop_id'=>1,

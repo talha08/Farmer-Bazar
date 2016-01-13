@@ -10,7 +10,7 @@ class UserController extends \BaseController
     public function create()
     {
 
-        return View::make('user.create')->with('title', 'Register');
+        return View::make('main.signup')->with('title', 'Register');
     }
 
 
@@ -22,6 +22,8 @@ class UserController extends \BaseController
     {
         $rules = [
             'contact' => 'required|unique:users',
+            'name' => 'required',
+            'district' => 'required',
             'password' => 'required|confirmed',
             'password_confirmation' => 'required'
         ];
@@ -38,6 +40,8 @@ class UserController extends \BaseController
             $user = new User();
 
             $user->contact = $data['contact'];
+            $user->name = $data['name'];
+            $user->district = $data['district'];
             $user->password = Hash::make($data['password']);
 
             if ($user->save()) {
@@ -54,9 +58,7 @@ class UserController extends \BaseController
                 $user_info->icon_url = 'uploads/image/defaultAvatar.png';
                 $user_info->avatar_url = 'uploads/image/defaultAvatar.png'; ;
                 if($user_info->save()){
-                    return Redirect::route('login')->with('success', "Your Account Created Successfully.
-                                                                        We sent a Mail to your Email Address.
-                                                                        Please verify your Email for login.");
+                    return Redirect::route('login')->with('success', "Log In Please.");
                 }
 
                 }
@@ -116,7 +118,9 @@ class UserController extends \BaseController
                 ));
             $user = User::where('id', Auth::user()->id)
                 ->update(array(
-                    'contact' => $data['contact']
+                    'contact' => $data['contact'],
+                    'name' => $data['name'],
+                    'district' => $data['district'],
                 ));
 
             if ($userInfo && $user) {
