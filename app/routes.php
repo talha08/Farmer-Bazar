@@ -16,14 +16,18 @@ Route::get('/',function(){
 	//return Redirect::route('dashboard');
 });
 
-
+//Route::get('products-all',['as'=>'main.all','uses'=>'ProductsController@allProducts']);
 
 Route::group(['before' => 'guest'], function(){
 
 
 	Route::get('home', ['as'=>'main.index','uses' => 'HomeController@home']);
-    Route::post('search', ['as'=>'search','uses' => 'ProductsController@search']);
+    Route::get('search', ['as'=>'search','uses' => 'ProductsController@search']);
     Route::get('products-all',['as'=>'main.all','uses'=>'ProductsController@allProducts']);
+
+    // Route::get('products-cat/{id}',['as'=>'main.all','uses'=>'ProductsController@one']);
+
+
 	Route::controller('password', 'RemindersController');
 	Route::get('login', ['as'=>'login','uses' => 'AuthController@login']);
 	Route::post('login', array('uses' => 'AuthController@doLogin'));
@@ -66,6 +70,7 @@ Route::group(array('before' => 'auth'), function()
 	Route::get('products/{id}/edit',['as'=>'products.edit', 'uses' => 'ProductsController@edit']);
 	Route::put('products/{id}',['as' => 'products.update', 'uses' => 'ProductsController@update']);
 	Route::get('products/{id}/delete', ['as' => 'products.destroy', 'uses' => 'ProductsController@destroy']);
+
 
 
 	Route::get('crops', ['as' => 'crops.index', 'uses' => 'CropsController@index']);

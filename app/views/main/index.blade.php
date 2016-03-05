@@ -96,10 +96,10 @@
                             <div class="col-md-8 col-md-offset-2">
                                 <div class="welcome-speech">
                                     <h1>কৃষি বাজার - এ আপনাকে স্বাগতম</h1>
-                                    {{ Form::open(array('route' => 'search', 'method' => 'post')) }}
+                                    {{ Form::open(array('route' => 'search', 'method' => 'get')) }}
                                         <div class="input-group margin-bottom-sm">
                                            
-                                             {{ Form::text('contact', '', array('class' => 'form-control',
+                                             {{ Form::input('search', 'q', null,array('class' => 'form-control',
                                              'type'=>'text' ,'placeholder'=>'কিছু খোঁজার জন্য এখানে লিখুন')) }}
 
                                             <a href="#" class="input-group-addon">

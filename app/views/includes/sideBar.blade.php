@@ -20,7 +20,7 @@
                           <span>Profile</span>
                       </a>
                   </li>
-
+ 
                   <li>
 
                       <a href="{{ URL::route('categories.index') }}">

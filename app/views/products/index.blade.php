@@ -41,7 +41,7 @@
                         </tr>
                         </thead>
 
-
+               
                         <tbody>
                         @foreach ($product as $product)
                             <tr>
@@ -67,6 +67,9 @@
                             </tr>
                             @endforeach
                         </tbody>
+                        
+                        <center><p>No Data Found</p><center>
+                        
                     </table>
                 </div>
             </section>

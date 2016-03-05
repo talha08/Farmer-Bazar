@@ -208,30 +208,36 @@ class ProductsController extends \BaseController {
 public function allProducts(){
 
        
-         
-         $category= Category::all();
-         $product= Product::all();
+         $categories= Category::with('crops')->get();
+        $product= Product::all();
 		return View::make('main.all')
 					  ->with('product',$product)
-					  ->with('category',$category)
+					  ->with('categories',$categories)
 	                  ->with('title',"Product Details");
  }   
 
 
 
- public function rice(){
- 	 $product= Product::where('crop_id',1)->get();
- 	 return View::make('main.all')
- 	           ->with('product',$product)
- 	           ->with('title',"Product Details");
- }
+public function one($id){
+
+    $product= Product::with('crops')->where('crop_id','=',$id)->get();
+    $categories= Category::with('crops')->get();
+	return View::make('main.all',compact('product'))
+					  ->with('categories',$categories)
+			          ->with('title',"Product Details");
+}
+
 
 
 
   public function search() {
-    $q = Input::get('search');
-        $product = Product::where('product_name', 'LIKE', '%'. $q .'%')
-        ->get();
+
+
+	  $query= Input::get('q');
+	  $product= $query
+		  ? Product::where('product_name', 'LIKE', "%$query%")->get()
+		  : Product::all();
+
      return Redirect::route('main.all')->with('product', $product);
 }
 

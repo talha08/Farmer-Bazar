@@ -11,6 +11,8 @@ class Crop extends \Eloquent {
 		return $this->belongsTo('Category','category_id','id');
 	}
 
+
+
 	public function product()
 	{
 		return $this->hasMany('Product','crop_id','id');

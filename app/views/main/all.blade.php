@@ -119,21 +119,23 @@
       
 
       <div class="col s12 m3 category">
-       @foreach($category as $category) 
+       @foreach($categories as $category)
          <ul class="collapsible popout" data-collapsible="accordion">
           <li>
             <div class="collapsible-header">{{$category->name}}</div>
             <div class="collapsible-body">
               <ul class="collection" style="border-left:1px #ddd solid;">
-                @foreach($category as $foscategoryol) 
-                <li class="collection-item"><a href="#">XYZ</a></li>
-                  @endforeach
+                @foreach($category->crops as $crop)
+                <li class="collection-item"><a href="{{ URL::route('main.all') }}">{{$crop->crop_name}}</a></li>
+                @endforeach
               </ul>
             </div>
           </li>
         </ul>
           @endforeach
-      </div> 
+      </div>
+
+
       
 
        <!-- view content -->
@@ -173,13 +175,7 @@
             <a href="#">মূল্য সীমা : {{ $product->min_price }} - {{ $product->max_price }} টাকা  </a>
             <a href="#">ঠিকানা : {{ $product->location }} </a>
             <a href="#">স্থায়িত্ব  : {{ $product->expiry_date }}</a>
-            <div style="float:right;color:#e57373;margin-right:1%;">
-              <i class="small material-icons grade">grade</i>
-              <i class="small material-icons grade">grade</i>
-              <i class="small material-icons grade">grade</i>
-              <i class="small material-icons grade">grade</i>
-              <i class="small material-icons grade">grade</i>
-            </div>
+
           </div>
 
        
@@ -202,16 +198,16 @@
 
 
         <div class="row">
-          <div class="col s12 m12">
-            <div class="search-category">
+          <div class="col-sm-offset-5 col-md-8">
+            <div class="">
               <ul class="pagination">
-                <li><a href="#!"><i class="material-icons">chevron_left</i></a></li>
-                <li class="active"><a href="#!">1</a></li>
-                <li class="waves-effect"><a href="#!">2</a></li>
-                <li class="waves-effect"><a href="#!">3</a></li>
-                <li class="waves-effect"><a href="#!">4</a></li>
-                <li class="waves-effect"><a href="#!">5</a></li>
-                <li class="waves-effect"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
+                <li><a href="#!"><<</a></li>
+                <li class="active"><a href="#!">১</a></li>
+                <li class="waves-effect"><a href="#!">২</a></li>
+                <li class="waves-effect"><a href="#!">৩</a></li>
+                <li class="waves-effect"><a href="#!">৪</a></li>
+                <li class="waves-effect"><a href="#!">৫</a></li>
+                <li class="waves-effect"><a href="#!">>></a></li>
               </ul>
             </div>
           </div>
@@ -230,10 +226,13 @@
       
   </div>
 
-  <!-- end page layout -->
 
+ <!-- end page layout -->
+<footer>
+
+</footer> 
 </div> <!-- end of /#home-page -->
-
+ 
 <script type="text/javascript" src="main/js/jquery-2.1.1.min.js"></script>
 <script type="text/javascript" src="main/js/jquery-ui.min.js"></script>
 
